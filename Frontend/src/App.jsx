@@ -21,7 +21,7 @@ function App() {
 
 
   async function reviewCode() {
-    const response = await axios.post("http://localhost:3000/ai/get-review", {
+    const response = await axios.post("https://code-review-xfwr.vercel.app/ai/get-review", {
       code,
     });
     setReview(response.data);
@@ -30,7 +30,7 @@ function App() {
   async function reviewCode() {
   setReview(""); // clear old
 
-  const response = await fetch("http://localhost:3000/ai/get-review", {
+  const response = await fetch("https://code-review-xfwr.vercel.app/ai/get-review", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ code }),
