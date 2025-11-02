@@ -88,3 +88,28 @@ async function generateContent(prompt) {
 }
 
 module.exports = generateContent;
+
+
+
+// services/ai.service.js
+// const { GoogleGenerativeAI } = require("@google/generative-ai-server");
+
+// const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_KEY);
+
+// const model = genAI.getGenerativeModel({
+//   model: "gemini-2.0-flash",
+//   systemInstruction: `you are a senior JS code reviewer, output markdown`
+// });
+
+// module.exports = function generateStream(code) {
+//   return model.generateContentStream({
+//     contents: [{
+//       role: "user",
+//       parts: [{ text: code }]
+//     }]
+//   });
+// };
+
+
+
+

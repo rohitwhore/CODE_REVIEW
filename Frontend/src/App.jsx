@@ -16,8 +16,9 @@ function App() {
   const [review, setReview] = useState(``);
 
   useEffect(() => {
-    prism.highlightAll();
-  });
+  prism.highlightAll();
+}, []);
+
 
   async function reviewCode() {
     const response = await axios.post("http://localhost:3000/ai/get-review", {
@@ -25,6 +26,27 @@ function App() {
     });
     setReview(response.data);
   }
+
+  async function reviewCode() {
+  setReview(""); // clear old
+
+  const response = await fetch("http://localhost:3000/ai/get-review", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ code }),
+  });
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    const chunk = decoder.decode(value);
+    setReview((prev) => prev + chunk);
+  }
+}
+
 
   return (
     <>
